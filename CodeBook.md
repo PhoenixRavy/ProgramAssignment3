@@ -1,7 +1,7 @@
 
 # Here is an apercu of the data 
 
-## str(dtTidy)
+## str(TidyData)
 Classes ‘data.table’ and 'data.frame':	11880 obs. of  11 variables:
  $ subject         : int  1 1 1 1 1 1 1 1 1 1 ... (ID the subject who performed the activity for each window sample. Its range is from 1 to 30.)
  $ activity        : Factor w/ 6 levels "LAYING","SITTING",..: 1 1 1 1 1 1 1 1 1 1 ... (Activity name)
@@ -18,11 +18,11 @@ Classes ‘data.table’ and 'data.frame':	11880 obs. of  11 variables:
  - attr(*, ".internal.selfref")=<externalptr> 
  
  
-## key(dtTidy)
+## key(TidyData)
 [1] "subject"          "activity"         "featDomain"       "featAcceleration" "featInstrument"  
 [6] "featJerk"         "featMagnitude"    "featVariable"     "featAxis" 
 
-## dtTidy
+## TidyData
        subject         activity featDomain featAcceleration featInstrument featJerk featMagnitude
     1:       1           LAYING       Time               NA      Gyroscope       NA            NA
     2:       1           LAYING       Time               NA      Gyroscope       NA            NA
@@ -48,7 +48,7 @@ Classes ‘data.table’ and 'data.frame':	11880 obs. of  11 variables:
 11879:         Mean       NA    65 -0.54978489
 11880:           SD       NA    65 -0.58087813
 
-## summary(dtTidy)
+## summary(TidyData)
     subject                   activity    featDomain  featAcceleration       featInstrument featJerk   
  Min.   : 1.0   LAYING            :1980   Time:7200   NA     :4680     Accelerometer:7200   NA  :7200  
  1st Qu.: 8.0   SITTING           :1980   Freq:4680   Body   :5760     Gyroscope    :4680   Jerk:4680  
@@ -64,72 +64,3 @@ Classes ‘data.table’ and 'data.frame':	11880 obs. of  11 variables:
                                          3rd Qu.:63.25   3rd Qu.:-0.07836  
                                          Max.   :95.00   Max.   : 0.97451  
 
-# dtTidy[, .N, by = c(names(dtTidy)[grep("^feat", names(dtTidy))])]
-    featDomain featAcceleration featInstrument featJerk featMagnitude featVariable featAxis   N
- 1:       Time               NA      Gyroscope       NA            NA         Mean        X 180
- 2:       Time               NA      Gyroscope       NA            NA         Mean        Y 180
- 3:       Time               NA      Gyroscope       NA            NA         Mean        Z 180
- 4:       Time               NA      Gyroscope       NA            NA           SD        X 180
- 5:       Time               NA      Gyroscope       NA            NA           SD        Y 180
- 6:       Time               NA      Gyroscope       NA            NA           SD        Z 180
- 7:       Time               NA      Gyroscope       NA     Magnitude         Mean       NA 180
- 8:       Time               NA      Gyroscope       NA     Magnitude           SD       NA 180
- 9:       Time               NA      Gyroscope     Jerk            NA         Mean        X 180
-10:       Time               NA      Gyroscope     Jerk            NA         Mean        Y 180
-11:       Time               NA      Gyroscope     Jerk            NA         Mean        Z 180
-12:       Time               NA      Gyroscope     Jerk            NA           SD        X 180
-13:       Time               NA      Gyroscope     Jerk            NA           SD        Y 180
-14:       Time               NA      Gyroscope     Jerk            NA           SD        Z 180
-15:       Time               NA      Gyroscope     Jerk     Magnitude         Mean       NA 180
-16:       Time               NA      Gyroscope     Jerk     Magnitude           SD       NA 180
-17:       Time             Body  Accelerometer       NA            NA         Mean        X 180
-18:       Time             Body  Accelerometer       NA            NA         Mean        Y 180
-19:       Time             Body  Accelerometer       NA            NA         Mean        Z 180
-20:       Time             Body  Accelerometer       NA            NA           SD        X 180
-21:       Time             Body  Accelerometer       NA            NA           SD        Y 180
-22:       Time             Body  Accelerometer       NA            NA           SD        Z 180
-23:       Time             Body  Accelerometer       NA     Magnitude         Mean       NA 180
-24:       Time             Body  Accelerometer       NA     Magnitude           SD       NA 180
-25:       Time             Body  Accelerometer     Jerk            NA         Mean        X 180
-26:       Time             Body  Accelerometer     Jerk            NA         Mean        Y 180
-27:       Time             Body  Accelerometer     Jerk            NA         Mean        Z 180
-28:       Time             Body  Accelerometer     Jerk            NA           SD        X 180
-29:       Time             Body  Accelerometer     Jerk            NA           SD        Y 180
-30:       Time             Body  Accelerometer     Jerk            NA           SD        Z 180
-31:       Time             Body  Accelerometer     Jerk     Magnitude         Mean       NA 180
-32:       Time             Body  Accelerometer     Jerk     Magnitude           SD       NA 180
-33:       Time          Gravity  Accelerometer       NA            NA         Mean        X 180
-34:       Time          Gravity  Accelerometer       NA            NA         Mean        Y 180
-35:       Time          Gravity  Accelerometer       NA            NA         Mean        Z 180
-36:       Time          Gravity  Accelerometer       NA            NA           SD        X 180
-37:       Time          Gravity  Accelerometer       NA            NA           SD        Y 180
-38:       Time          Gravity  Accelerometer       NA            NA           SD        Z 180
-39:       Time          Gravity  Accelerometer       NA     Magnitude         Mean       NA 180
-40:       Time          Gravity  Accelerometer       NA     Magnitude           SD       NA 180
-41:       Freq               NA      Gyroscope       NA            NA         Mean        X 180
-42:       Freq               NA      Gyroscope       NA            NA         Mean        Y 180
-43:       Freq               NA      Gyroscope       NA            NA         Mean        Z 180
-44:       Freq               NA      Gyroscope       NA            NA           SD        X 180
-45:       Freq               NA      Gyroscope       NA            NA           SD        Y 180
-46:       Freq               NA      Gyroscope       NA            NA           SD        Z 180
-47:       Freq               NA      Gyroscope       NA     Magnitude         Mean       NA 180
-48:       Freq               NA      Gyroscope       NA     Magnitude           SD       NA 180
-49:       Freq               NA      Gyroscope     Jerk     Magnitude         Mean       NA 180
-50:       Freq               NA      Gyroscope     Jerk     Magnitude           SD       NA 180
-51:       Freq             Body  Accelerometer       NA            NA         Mean        X 180
-52:       Freq             Body  Accelerometer       NA            NA         Mean        Y 180
-53:       Freq             Body  Accelerometer       NA            NA         Mean        Z 180
-54:       Freq             Body  Accelerometer       NA            NA           SD        X 180
-55:       Freq             Body  Accelerometer       NA            NA           SD        Y 180
-56:       Freq             Body  Accelerometer       NA            NA           SD        Z 180
-57:       Freq             Body  Accelerometer       NA     Magnitude         Mean       NA 180
-58:       Freq             Body  Accelerometer       NA     Magnitude           SD       NA 180
-59:       Freq             Body  Accelerometer     Jerk            NA         Mean        X 180
-60:       Freq             Body  Accelerometer     Jerk            NA         Mean        Y 180
-61:       Freq             Body  Accelerometer     Jerk            NA         Mean        Z 180
-62:       Freq             Body  Accelerometer     Jerk            NA           SD        X 180
-63:       Freq             Body  Accelerometer     Jerk            NA           SD        Y 180
-64:       Freq             Body  Accelerometer     Jerk            NA           SD        Z 180
-65:       Freq             Body  Accelerometer     Jerk     Magnitude         Mean       NA 180
-66:       Freq             Body  Accelerometer     Jerk     Magnitude           SD       NA 180
-    featDomain featAcceleration featInstrument featJerk featMagnitude featVariable featAxis   N
