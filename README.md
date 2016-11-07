@@ -22,6 +22,6 @@ Source: https://www.coursera.org/learn/data-cleaning/peer/FIZtT/getting-and-clea
 
 
 # Steps
-- The run_analysis.md is a copy of my run_analysis.R script an it is commented, execute the script to see the data transformation.
+- The run_analysis.R script and it is commented, execute the script to see the data transformation.
 - CodeBook.md gives you more information on the results.
 
