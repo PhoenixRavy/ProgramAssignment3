@@ -22,8 +22,8 @@ pathIn <- file.path(path, "UCI HAR Dataset")
 list.files(pathIn, recursive=TRUE)
 
 #read the file 
-SubjectTrain <- fread(file.path(pathIn, "train", "subject_train.txt"))
-SubjectTest  <- fread(file.path(pathIn, "test" , "subject_test.txt" ))
+SubjectTrain <- fread(file.path(pathIn,  "train", "subject_train.txt"))
+SubjectTest  <- fread(file.path(pathIn,  "test" , "subject_test.txt" ))
 ActivityTrain <- fread(file.path(pathIn, "train", "Y_train.txt"))
 ActivityTest  <- fread(file.path(pathIn, "test" , "Y_test.txt" ))
 ActivityTrain <- fread(file.path(pathIn, "train", "Y_train.txt"))
@@ -40,7 +40,7 @@ dtTest  <- fileToDataTable(file.path(pathIn, "test" , "X_test.txt" ))
 Subject <- rbind(SubjectTrain, SubjectTest)
 setnames(dtSubject, "V1", "subject")
 Activity <- rbind(ActivityTrain, ActivityTest)
-setnames(Activity, "V1", "activityNum")
+setnames(Activity,  "V1", "activityNum")
 dt <- rbind(dtTrain, dtTest)
 
 #merge columns
@@ -115,3 +115,5 @@ r1 == r2
 setkey(dt, subject, activity, featDomain, featAcceleration, featInstrument, featJerk, featMagnitude, featVariable, featAxis)
 dtTidy <- dt[, list(count = .N, average = mean(value)), by=key(dt)]
 
+# Write file
+write.table(TidyData, "TidyData.txt", row.names = FALSE)
